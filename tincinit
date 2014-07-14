@@ -1,8 +1,20 @@
 #!/bin/bash
 # tinc name is $MYDOMAIN
+# tinc server daemon to connect to
+# tinc host import is SERVERIMPORT
+
+mknod -m 600 /dev/net/tun c 10 200
 
 tinc -n vpn init $MYDOMAIN
 tinc -n vpn add address vpn.$MYDOMAIN
 
+if [ ! -z "$SERVERIMPORT" ]; then
+  echo "Importing vpn server data."
+  tinc -n vpn import <<< "$SERVERIMPORT"
+  tinc -n vpn add connectto server
+fi
+
 echo $MYPRIVATEIP>/usr/local/etc/tinc/vpn/myipaddress
+tinc -n vpn export > /usr/local/exported.tinc
+tincd -n vpn start
 
