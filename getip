@@ -1,0 +1,6 @@
+#!/bin/bash
+addrfile=/usr/local/etc/tinc/myipaddress
+load=$(cat $addrfile)
+trimmed=${load//[[:space:]]/}
+MYIPADDR=$trimmed
+printf $MYIPADDR

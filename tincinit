@@ -1,0 +1,8 @@
+#!/bin/bash
+# tinc name is $MYDOMAIN
+
+tinc -n vpn init $MYDOMAIN
+tinc -n vpn add address vpn.$MYDOMAIN
+
+echo $MYPRIVATEIP>/usr/local/etc/tinc/vpn/myipaddress
+
