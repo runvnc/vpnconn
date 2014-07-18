@@ -1,2 +1,2 @@
 #!/bin/bash
-vpn -n vpn import </vpndata/$1
+tinc -n vpn import < /vpndata/$1
