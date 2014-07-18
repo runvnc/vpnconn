@@ -1,0 +1,2 @@
+#!/bin/bash
+vpn -n vpn import </vpndata/$1

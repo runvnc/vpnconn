@@ -4,6 +4,7 @@ RUN apt-get install -y -q liblzo2-dev zlib1g-dev libncurses5-dev libssl-dev libr
 ADD tinc /usr/bin/
 ADD tincd /usr/bin/
 ADD getip /usr/bin/
+ADD doimport /usr/bin/
 ADD tincinit /usr/bin/
 RUN mkdir -p /usr/local/etc/tinc
 RUN mkdir -p /usr/local/var/run

@@ -8,10 +8,12 @@ mknod -m 600 /dev/net/tun c 10 200
 #chmod 600 /dev/net/tun
 
 echo "Initializing."
-tinc -n vpn init NAME
+tinc -n vpn init $NAME
 
 echo "Adding address."
-tinc -n vpn add address vpn.$DOMAIN
+tinc -n vpn add address $EXTIP
+tinc -n vpn add port $EXTPORT
+tinc -n vpn add subnet $PRIVIP/32
 
 if [ ! -z "$SERVERIMPORT" ]; then
   echo "Importing vpn server data."
@@ -29,8 +31,9 @@ echo "Updating tinc-up."
 mv /usr/local/etc/tinc-up /usr/local/etc/tinc/vpn/
 
 echo "Starting tinc daemon."
-tincd -D -n vpn
+tincd -n vpn
 
-echo "Daemon exited."
+echo "FINISHED"
 
+sleep infinity
 
