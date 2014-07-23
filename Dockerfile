@@ -6,6 +6,7 @@ ADD tincd /usr/bin/
 ADD getip /usr/bin/
 ADD doimport /usr/bin/
 ADD tincinit /usr/bin/
+ADD getdomain /usr/bin/
 RUN mkdir -p /usr/local/etc/tinc
 RUN mkdir -p /usr/local/var/run
 ADD tinc-up /usr/local/etc/

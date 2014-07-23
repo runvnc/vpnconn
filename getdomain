@@ -1,0 +1,8 @@
+#!/bin/bash
+
+getdomain() {
+  echo "$1" | sed -rn 's/(.*)\.(.*)\.(.*)/\2\.\3/p'
+}
+
+getdomain "$@"
+

@@ -7,31 +7,33 @@ mkdir -p /dev/net
 mknod -m 600 /dev/net/tun c 10 200
 #chmod 600 /dev/net/tun
 
+NETNAME=$(./getdomain $NAME)
+
 echo "Initializing."
-tinc -n vpn init $NAME
+tinc -n $NETNAME init $NAME
 
 echo "Adding address."
-tinc -n vpn add address $EXTIP
-tinc -n vpn add port $EXTPORT
-tinc -n vpn add subnet $PRIVIP/32
+tinc -n $NETNAME add address $EXTIP
+tinc -n $NETNAME add port $EXTPORT
+tinc -n $NETNAME add subnet $PRIVIP/32
 
 if [ ! -z "$SERVERIMPORT" ]; then
-  echo "Importing vpn server data."
-  tinc -n vpn import <<< "$SERVERIMPORT"
-  tinc -n vpn add connectto server
+  echo "Importing $NETNAME server data."
+  tinc -n $NETNAME import <<< "$SERVERIMPORT"
+  tinc -n $NETNAME add connectto server
 fi
 
 echo "Writing IP address to file."
 echo $PRIVIP>/usr/local/etc/tinc/myipaddress
 
 echo "Exporting data."
-tinc -n vpn export > /usr/local/exported.tinc
+tinc -n $NETNAME export > /usr/local/exported.tinc
 
 echo "Updating tinc-up."
-mv /usr/local/etc/tinc-up /usr/local/etc/tinc/vpn/
+mv /usr/local/etc/tinc-up /usr/local/etc/tinc/$NETNAME/
 
 echo "Starting tinc daemon."
-tincd -n vpn
+tincd -n $NETNAME
 
 echo "FINISHED"
 
