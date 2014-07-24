@@ -3,7 +3,6 @@
 # tinc server daemon to connect to
 # tinc host import is SERVERIMPORT
 
-NETNAME=$2
 echo "Initializing."
 tinc -n $NETNAME init $NAME
 
