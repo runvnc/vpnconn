@@ -3,8 +3,17 @@
 # tinc server daemon to connect to
 # tinc host import is SERVERIMPORT
 
+echo "Hello from tincinit."
+echo "environment variables:"
+env
+
+echo "-------------------------"
+set -x
+
 echo "Initializing."
 tinc -n $NETNAME init $NAME
+
+echo "!!!!!!!!!!!!!!!!!!!!"
 
 echo "Adding address."
 tinc -n $NETNAME add address $EXTIP
@@ -12,7 +21,7 @@ tinc -n $NETNAME add port $EXTPORT
 tinc -n $NETNAME add subnet $PRIVIP/32
 
 if [ ! -z "$SERVERIMPORT" ]; then
-  echo "Importing $NETNAME server data."
+  echo "!!!!!!!!!! Importing $NETNAME server data."
   tinc -n $NETNAME import <<< "$SERVERIMPORT"
   tinc -n $NETNAME add connectto server
 fi
