@@ -21,8 +21,8 @@ tinc -n $NETNAME add port $EXTPORT
 tinc -n $NETNAME add subnet $PRIVIP/32
 
 if [ ! -z "$SERVERIMPORT" ]; then
-  echo "!!!!!!!!!! Importing $NETNAME server data."
-  tinc -n $NETNAME import <<< "$SERVERIMPORT"
+  echo "!!!!!!!!!! Importing $NETNAME server data from file $SERVERIMPORT."
+  tinc -n $NETNAME import < "$SERVERIMPORT"
   tinc -n $NETNAME add connectto server
 fi
 
