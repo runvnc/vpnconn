@@ -10,6 +10,7 @@ env
 echo "-------------------------"
 set -x
 
+echo "NETNAME is $NETNAME"
 echo "Initializing."
 tinc -n $NETNAME init $NAME
 
