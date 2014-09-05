@@ -10,6 +10,7 @@ ADD getdomain /usr/bin/
 RUN mkdir -p /usr/local/etc/tinc
 RUN mkdir -p /usr/local/var/run
 ADD tinc-up /usr/local/etc/
+VOLUME /vpndata
 #ENV MYDOMAIN
 #ENV SERVERIMPORT
 #ENV MYPRIVATEIP

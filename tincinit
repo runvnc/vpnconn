@@ -7,8 +7,14 @@ echo "Hello from tincinit."
 echo "environment variables:"
 env
 
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ /vpndata is"
+ls -lah /vpndata
+
 echo "-------------------------"
 set -x
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ /vpndata is"
+ls -lah /vpndata
+
 
 echo "NETNAME is $NETNAME"
 echo "Initializing."
