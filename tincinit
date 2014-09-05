@@ -41,5 +41,8 @@ tincd -n $NETNAME
 
 echo "FINISHED"
 
+echo "**** vpndata is ****"
+ls -lah /vpndata
+
 sleep infinity
 
