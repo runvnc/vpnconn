@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Hello, welcome to your local doimport script"
 echo "^^^ /vpndata is ^^^"
 ls -lah /vpndata
 tinc -n $1 import < /vpndata/$2".tinc"
